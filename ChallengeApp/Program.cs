@@ -1,15 +1,14 @@
-int number = 9010888;
+int number = 111055;
 string numberAsString = number.ToString();
 char[] letters = numberAsString.ToArray();
-string numbersForCheck = "0123456789";
-char[] checkForCounter = numbersForCheck.ToArray();
+char[] checkForCountert = new char[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 int[] counter = new int[10];
 
 for (int i = 0; i < letters.Length; i++)
 {
-    for (int j = 0; j < checkForCounter.Length; j++)
+    for (int j = 0; j < checkForCountert.Length; j++)
     {
-        if(letters[i] == checkForCounter[j])
+        if(letters[i] == checkForCountert[j])
         {
             counter[j]++;
         }
