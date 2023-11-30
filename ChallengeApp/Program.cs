@@ -1,4 +1,4 @@
-int number = 111055;
+int number = 11022033;
 string numberAsString = number.ToString();
 char[] letters = numberAsString.ToArray();
 char[] checkForCountert = new char[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -19,5 +19,5 @@ Console.WriteLine($"Wynik dla liczby: {numberAsString}");
 
 for (int i = 0; i < 10; i++)
 {
-    Console.WriteLine(i.ToString() + " => " + counter[i].ToString());
+    Console.WriteLine($"{i} => {counter[i]}");
 }
