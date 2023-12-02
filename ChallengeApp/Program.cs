@@ -11,6 +11,7 @@ for (int i = 0; i < letters.Length; i++)
         if(letters[i] == checkForCountert[j])
         {
             counter[j]++;
+            break;
         }
     }
 }
