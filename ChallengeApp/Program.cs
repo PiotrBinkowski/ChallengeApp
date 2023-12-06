@@ -1,24 +1,89 @@
-int number = 11022033;
-string numberAsString = number.ToString();
-char[] letters = numberAsString.ToArray();
-char[] checkForCountert = new char[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
-int[] counter = new int[10];
+using System.Reflection.Metadata;
+using ChalengeApp;
 
-for (int i = 0; i < letters.Length; i++)
+Employee employee1 = new Employee("Izabela", "Kowalska", 21);
+Employee employee2 = new Employee("Łucja", "Nowak", 30);
+Employee employee3 = new Employee("Jakub", "Baczyński", 36);
+
+employee1.AddScore(9);
+employee1.AddScore(2);
+employee1.AddScore(8);
+employee1.AddScore(3);
+employee1.AddScore(1);
+
+employee2.AddScore(9);
+employee2.AddScore(3);
+employee2.AddScore(2);
+employee2.AddScore(6);
+employee2.AddScore(9);
+
+employee3.AddScore(9);
+employee3.AddScore(7);
+employee3.AddScore(1);
+employee3.AddScore(9);
+employee3.AddScore(8);
+
+List<Employee> employees = new List<Employee>()
 {
-    for (int j = 0; j < checkForCountert.Length; j++)
+    employee1, employee2, employee3
+};
+
+List<Employee> champions = new List<Employee>();
+
+int maxResult = -1;
+//Employee employeeWithMaxResult = null;
+
+foreach(var employee in employees)
+{
+    if(employee.Result > maxResult)
     {
-        if(letters[i] == checkForCountert[j])
-        {
-            counter[j]++;
-            break;
-        }
+        maxResult = employee.Result;
     }
 }
 
-Console.WriteLine($"Wynik dla liczby: {numberAsString}");
-
-for (int i = 0; i < 10; i++)
+foreach(var champion in employees)
 {
-    Console.WriteLine($"{i} => {counter[i]}");
+    if(champion.Result == maxResult)
+    {
+        champions.Add(champion);
+    }
+}
+
+
+
+if(champions.Count == 3)
+{
+    Console.WriteLine("Wszyscy pracownicy uzyskali tę samą ilość punktów.");
+    foreach(var champion in champions)
+    {
+        Console.WriteLine();
+        Console.WriteLine($"Imię: {champion.Name}");
+        Console.WriteLine($"Nazwisko: {champion.Surname}");
+        Console.WriteLine($"Wiek: {champion.Age}");
+        Console.WriteLine($"Wynik: {champion.Result}");
+        Console.WriteLine();
+    }
+}
+else if(champions.Count == 2)
+{
+    Console.WriteLine($"{champions[0].Name} i {champions[1].Name} zdobyli tę samą ilość punktów.");
+    foreach(var champion in champions)
+    {
+        Console.WriteLine();
+        Console.WriteLine($"Imię: {champion.Name}");
+        Console.WriteLine($"Nazwisko: {champion.Surname}");
+        Console.WriteLine($"Wiek: {champion.Age}");
+        Console.WriteLine($"Wynik: {champion.Result}");
+        Console.WriteLine();
+    }
+}
+else
+{
+    Console.WriteLine($"Wygrywa {champions[0].Name}.");
+    Console.WriteLine();
+    Console.WriteLine($"Imię: {champions[0].Name}");
+    Console.WriteLine($"Nazwisko: {champions[0].Surname}");
+    Console.WriteLine($"Wiek: {champions[0].Age}");
+    Console.WriteLine($"Wynik: {champions[0].Result}");
+    Console.WriteLine();
 }
